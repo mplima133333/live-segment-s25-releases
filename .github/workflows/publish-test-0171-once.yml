@@ -1,4 +1,5 @@
 name: Publish TEST 0.17.1 updater once
+# ref-trigger retry
 
 on:
   push:
@@ -20,7 +21,7 @@ jobs:
       - name: Download revalidated test artifact
         shell: bash
         env:
-          ARTIFACT_URL: "https://sdmntprbrazilsouth.oaiusercontent.com/files/00000000-a858-820e-b82cf795a730f9a1/raw?se=2026-10-07T23%3A49%3A22Z&sp=r&sv=2026-02-06&sr=b&scid=04fd18b6-25b0-5842-b922-12eead2e71b1&skoid=68f37fa7-4e08-478b-93f3-c72d563a0ab3&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-07T13%3A27%3A41Z&ske=2026-10-08T13%3A27%3A41Z&sks=b&skv=2026-02-06&sig=W9%2BL1AGJxB8DctkhBDCmKjn2hpIbIEJy9Kh9Sn3G5u0%3D"
+          ARTIFACT_URL: "https://sdmntprbrazilsouth.oaiusercontent.com/files/00000000-0b0c-820e-803c-ec505a29c097/raw?se=2026-10-07T23%3A51%3A27Z&sp=r&sv=2026-02-06&sr=b&scid=204c62b2-e290-5386-b96c-2497e78ebab0&skoid=68f37fa7-4e08-478b-93f3-c72d563a0ab3&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-07T10%3A45%3A30Z&ske=2026-10-08T10%3A45%3A30Z&sks=b&skv=2026-02-06&sig=UMcyb/qD5rGLGAkoGkzkyZp7%2BA10JWdqXqi3Uca4O4I%3D"
         run: |
           set -euo pipefail
           curl -fL "$ARTIFACT_URL" -o artifact.zip
