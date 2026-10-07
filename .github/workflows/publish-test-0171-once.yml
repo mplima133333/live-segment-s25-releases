@@ -1,0 +1,82 @@
+name: Publish TEST 0.17.1 updater once
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - .github/workflows/publish-test-0171-once.yml
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download revalidated test artifact
+        shell: bash
+        env:
+          ARTIFACT_URL: "https://sdmntprbrazilsouth.oaiusercontent.com/files/00000000-a858-820e-b82cf795a730f9a1/raw?se=2026-10-07T23%3A49%3A22Z&sp=r&sv=2026-02-06&sr=b&scid=04fd18b6-25b0-5842-b922-12eead2e71b1&skoid=68f37fa7-4e08-478b-93f3-c72d563a0ab3&sktid=a48cca56-e6da-484e-a814-9c849652bcb3&skt=2026-10-07T13%3A27%3A41Z&ske=2026-10-08T13%3A27%3A41Z&sks=b&skv=2026-02-06&sig=W9%2BL1AGJxB8DctkhBDCmKjn2hpIbIEJy9Kh9Sn3G5u0%3D"
+        run: |
+          set -euo pipefail
+          curl -fL "$ARTIFACT_URL" -o artifact.zip
+          unzip -q artifact.zip -d artifact
+          test -f artifact/LIVE_SEGMENT_S25_ANDROID16_V0_17_1_MULTIROUTE_TESTE.apk
+          test -f artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_SHA256.txt
+          test -f artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_CERTIFICATE.txt
+          test -f artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_BADGING.txt
+          grep -Fq "c07ebeb2ee910c67d09d14b76c49e8fa18d0a034395f0f2947d0b2deacb584dd" artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_SHA256.txt
+          grep -Fq "package: name='com.ciclismo.livesegments.multiroute' versionCode='28' versionName='0.17.1-s25-multiroute-test'" artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_BADGING.txt
+          grep -Fqi "Signer #1 certificate SHA-256 digest: b9f7b175c4014c274c0449538c114a52bc2fb894e5fa679e634ab6f805c03f7f" artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_CERTIFICATE.txt
+          echo "c07ebeb2ee910c67d09d14b76c49e8fa18d0a034395f0f2947d0b2deacb584dd  artifact/LIVE_SEGMENT_S25_ANDROID16_V0_17_1_MULTIROUTE_TESTE.apk" | sha256sum -c -
+
+      - name: Stage test updater payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf v0.17.1-test
+          mkdir -p v0.17.1-test
+          APK="artifact/LIVE_SEGMENT_S25_ANDROID16_V0_17_1_MULTIROUTE_TESTE.apk"
+          base64 -w 0 "$APK" > all.b64
+          split -b 350000 -d -a 2 all.b64 v0.17.1-test/part
+          rm all.b64
+          for f in v0.17.1-test/part*; do mv "$f" "$f.b64"; done
+          cp artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_SHA256.txt v0.17.1-test/
+          cp artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_CERTIFICATE.txt v0.17.1-test/
+          cp artifact/LIVE_SEGMENT_S25_V0_17_1_TESTE_BADGING.txt v0.17.1-test/
+          stat -c%s "$APK" > v0.17.1-test/APK_SIZE.txt
+          git config user.name "live-segment-test-release"
+          git config user.email "actions@users.noreply.github.com"
+          git add v0.17.1-test
+          git commit -m "Stage TEST 0.17.1 updater payload [skip ci]"
+          git push
+
+      - name: Publish latest-test.json last
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          base = "https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test"
+          parts = sorted(Path("v0.17.1-test").glob("part*.b64"))
+          data = {
+              "versionCode": 28,
+              "versionName": "0.17.1-s25-multiroute-test",
+              "sha256": "c07ebeb2ee910c67d09d14b76c49e8fa18d0a034395f0f2947d0b2deacb584dd",
+              "totalBytes": 3276041,
+              "notes": "Atualização do Live Segment TESTE: Top 10 IDA/VOLTA recalculado com os FITs de 03, 04, 06 e 07/10; novos perfis competitivos; FINISH da VOLTA antecipado 20 m; IDA mantém os gates originais. Regressão completa antes/depois aprovada.",
+              "chunks": [f"{base}/{p.name}" for p in parts]
+          }
+          Path("latest-test.json").write_text(
+              json.dumps(data, ensure_ascii=False, separators=(",", ":")) + "\n",
+              encoding="utf-8"
+          )
+          PY
+          git add latest-test.json
+          git commit -m "Release TEST 0.17.1 to in-app updater [skip ci]"
+          git push
