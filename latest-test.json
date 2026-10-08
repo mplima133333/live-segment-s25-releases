@@ -1,20 +1,20 @@
 {
-  "versionCode": 29,
-  "versionName": "0.17.2-s25-top10-test",
-  "sha256": "8df286f0505b3a6115b15a099057c92e1abb2bbf1b3f54c515127763b3f8668c",
-  "totalBytes": 3276609,
-  "notes": "Live Segment TESTE 0.17.2: auditoria do Top 10 IDA/VOLTA; correção reproduzível das cinco médias limpas estimadas de outubro; médias em movimento e incluindo pausas claramente diferenciadas; ranking, gates e recordes oficiais preservados. Instaladores anteriores que consultam o GitHub antigo precisam de instalação manual desta versão para migrar o canal de atualização.",
+  "versionCode": 31,
+  "versionName": "0.17.4-s25-install-permission-fix-test",
+  "sha256": "b8db7c571ec917a8e3c2ffc8c89c5ac8dc2830dc63f3e8bdf8385d443dfc1376",
+  "totalBytes": 3281065,
+  "notes": "HOTFIX Live Segment TESTE Android 16/S25: corrige falha de inicialização por SecurityException em PackageManager.canRequestPackageInstalls(); inclui a permissão REQUEST_INSTALL_PACKAGES e protege a retomada de instalações para evitar ciclos de crash e abertura repetida das Configurações. Preserva histórico de pedais, Top 10, rotas, gates e aplicativo estável. Se a versão anterior não abre, instale manualmente o APK 0.17.4 por cima, sem desinstalar.",
   "chunks": [
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part00.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part01.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part02.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part03.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part04.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part05.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part06.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part07.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part08.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part09.b64",
-    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part10.b64"
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part00.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part01.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part02.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part03.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part04.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part05.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part06.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part07.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part08.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part09.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.4-test/part10.b64"
   ]
 }
