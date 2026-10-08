@@ -1,1 +1,20 @@
-{"versionCode":28,"versionName":"0.17.1-s25-multiroute-test","sha256":"c07ebeb2ee910c67d09d14b76c49e8fa18d0a034395f0f2947d0b2deacb584dd","totalBytes":3276041,"notes":"Atualização do Live Segment TESTE: Top 10 IDA/VOLTA recalculado com os FITs de 03, 04, 06 e 07/10; novos perfis competitivos; FINISH da VOLTA antecipado 20 m; IDA mantém os gates originais. Regressão completa antes/depois aprovada.","chunks":["https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part00.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part01.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part02.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part03.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part04.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part05.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part06.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part07.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part08.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part09.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part10.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part11.b64","https://raw.githubusercontent.com/mplima13333/live-segment-s25-releases/main/v0.17.1-test/part12.b64"]}
+{
+  "versionCode": 29,
+  "versionName": "0.17.2-s25-top10-test",
+  "sha256": "8df286f0505b3a6115b15a099057c92e1abb2bbf1b3f54c515127763b3f8668c",
+  "totalBytes": 3276609,
+  "notes": "Live Segment TESTE 0.17.2: auditoria do Top 10 IDA/VOLTA; correção reproduzível das cinco médias limpas estimadas de outubro; médias em movimento e incluindo pausas claramente diferenciadas; ranking, gates e recordes oficiais preservados. Instaladores anteriores que consultam o GitHub antigo precisam de instalação manual desta versão para migrar o canal de atualização.",
+  "chunks": [
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part00.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part01.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part02.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part03.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part04.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part05.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part06.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part07.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part08.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part09.b64",
+    "https://raw.githubusercontent.com/mplima133333/live-segment-s25-releases/main/v0.17.2-test/part10.b64"
+  ]
+}
